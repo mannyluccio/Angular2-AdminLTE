@@ -7,10 +7,19 @@ import {ApplicationHttpClient} from '../resource/http.factory';
 @Injectable()
 export class AuthService {
 
-    constructor(private http: ApplicationHttpClient) {
+    private _token;
+
+    constructor(private _http: ApplicationHttpClient) {
     }
 
     login(username: string, password: string): Observable<Response> {
-        return this.http.Post('userManagement/adminUser/login', {username: username, password: password });
+        return this._http.Post('userManagement/adminUser/login', {username: username, password: password });
+    }
+    get token() {
+        return this._token;
+    }
+
+    set token(value) {
+        this._token = value;
     }
 }

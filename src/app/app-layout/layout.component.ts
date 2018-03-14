@@ -2,11 +2,11 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../service/auth.service';
 
 @Component({
-    selector: 'app-starter',
-    templateUrl: './starter.component.html',
-    styleUrls: ['./starter.component.css']
+    selector: 'app-layout',
+    templateUrl: './layout.component.html',
+    styleUrls: ['./layout.component.scss']
 })
-export class StarterComponent implements OnInit, OnDestroy {
+export class LayoutComponent implements OnInit, OnDestroy {
 
     bodyClasses = 'skin-blue sidebar-mini';
     body: HTMLBodyElement = document.getElementsByTagName('body')[0];
