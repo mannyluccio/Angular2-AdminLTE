@@ -1,4 +1,3 @@
-import {AppRoutingModule} from './app-routing/app-routing.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
@@ -6,25 +5,22 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 import {ApplicationHttpClient, applicationHttpClientCreator} from './resource/http.factory';
 import {CustomHttpInterceptor} from './resource/http.interceptor';
 import {AuthService} from './service/auth.service';
-import {LayoutComponent} from './app-module/layout.component';
-import {HeaderComponent} from './app-module/header/header.component';
-import {SidebarComponent} from './app-module/sidebar/sidebar.component';
-import {FooterComponent} from './app-module/footer/footer.component';
-import {DashboardComponent} from './app-module/dashboard/dashboard.component';
+import LoginModule from './login-module/login-module';
+import {RouterModule} from '@angular/router';
+import HomeModule from './app-module/app-module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        LayoutComponent,
-        HeaderComponent,
-        SidebarComponent,
-        FooterComponent,
-        DashboardComponent
     ],
     imports: [
+        RouterModule.forRoot([
+            {path: '', redirectTo: 'home', pathMatch: 'full'},
+        ]),
         BrowserModule,
-        AppRoutingModule,
         HttpClientModule,
+        LoginModule,
+        HomeModule,
     ],
     providers: [
         // Providing the ApplicationHttpClient so it could be used as a service.
