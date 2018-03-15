@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AuthService} from '../../service/auth.service';
 
 @Component({
     selector: 'app-layout',
@@ -7,8 +8,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
-    constructor() {
-    }
+    constructor(private authService: AuthService) {}
 
     ngOnInit() {
     }

@@ -16,6 +16,7 @@ import HomeModule from './app-module/app-module';
     imports: [
         RouterModule.forRoot([
             {path: '', redirectTo: 'home', pathMatch: 'full'},
+            {path: '**', redirectTo: 'home'}
         ]),
         BrowserModule,
         HttpClientModule,

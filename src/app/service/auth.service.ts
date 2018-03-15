@@ -12,11 +12,18 @@ export class AuthService {
     constructor(private _http: ApplicationHttpClient) {
     }
 
-    login(username: string, password: string): Observable<Response> {
+    login(username: string, password: string): Observable<any> {
         return this._http.Post('/auth', {email: username, password: password });
     }
+    processLogin(token) {
+        this.token = token;
+        localStorage.setItem('token', token);
+    }
+    isLoggedIn() {
+        return this.token ? true : false;
+    }
     get token() {
-        return this._token;
+        return this._token || localStorage.getItem('token');
     }
 
     set token(value) {

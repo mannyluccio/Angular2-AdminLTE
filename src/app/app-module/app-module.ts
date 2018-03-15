@@ -5,12 +5,14 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {HeaderComponent} from './header/header.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {FooterComponent} from './footer/footer.component';
+import {AuthGuard} from '../service/auth.guard';
 
 const appRoutes: Routes = [
     {
-        path: 'home', component: LayoutComponent,
+        path: '', component: LayoutComponent, canActivate: [AuthGuard],
         children: [
-            {path: '', component: DashboardComponent},
+            {path: '', redirectTo: 'home', pathMatch: 'full'},
+            {path: 'home', component: DashboardComponent},
         ]
     },
 ];
@@ -26,7 +28,7 @@ const appRoutes: Routes = [
         FooterComponent,
         DashboardComponent
     ],
-    providers: []
+    providers: [AuthGuard]
 })
 export default class HomeModule {
 }

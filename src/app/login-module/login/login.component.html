@@ -1,21 +1,25 @@
 <p class="login-box-msg">Sign in to start your session</p>
 
-<form action="../../index2.html" method="post">
-    <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+<form novalidate (ngSubmit)="login(f)" #f="ngForm">
+    <div class="form-group" [ngClass]="{'has-error': f.controls.email?.errors?.required && (f.controls.email?.dirty || f.controls.email?.touched )}">
+        <input id="email" name="email" type="email"  [(ngModel)] = "email" class="form-control" placeholder="Email" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <div *ngIf="f.controls.email?.errors?.required && (f.controls.email?.dirty || f.controls.email?.touched )" class="help-block">
+            Email is required
+        </div>
     </div>
-    <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+    <div class="form-group" [ngClass]="{'has-error': f.controls.password?.errors?.required && (f.controls.password?.dirty || f.controls.password?.touched )}">
+        <input type="password" name="password" id="password" [(ngModel)] = "password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <div *ngIf="f.controls.password?.errors?.required && (f.controls.password?.dirty || f.controls.password?.touched )" class="help-block">
+            Password is required
+        </div>
     </div>
     <div class="row">
         <div class="col-xs-8">
         </div>
-        <!-- /.col -->
         <div class="col-xs-4">
             <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div>
-        <!-- /.col -->
     </div>
 </form>
