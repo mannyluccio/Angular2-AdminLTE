@@ -13,7 +13,7 @@ export class AuthService {
     }
 
     login(username: string, password: string): Observable<Response> {
-        return this._http.Post('userManagement/adminUser/login', {username: username, password: password });
+        return this._http.Post('/auth', {email: username, password: password });
     }
     get token() {
         return this._token;

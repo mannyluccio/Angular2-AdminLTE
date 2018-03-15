@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  endpoint: 'http://local-api.podiumrewards.com/v1/',
+  endpoint: 'http://mp-api.ctlr.it/v1',
 };
